@@ -1,4 +1,5 @@
 package test;
+
 import java.util.ArrayList;
 
 public class SortList {
@@ -18,5 +19,4 @@ public class SortList {
 	public String toString() {
 		return "[" + urlstr + ", " + score + "]" + "\n";
 	}
-
 }

@@ -42,13 +42,12 @@ public class WebPage {
 			score2 = countList.get(0) * 1 + a * 10 + b*5;
 		}
 		
-		//if (score1 < score2)
-			//score2 = score1;
-		System.out.println(score1);
-		System.out.println(score2);
+		
+//		System.out.println(score1);
+//		System.out.println(score2);
 
 		int totalScore = score1 + score2;
-		System.out.println(totalScore);
+//		System.out.println(totalScore);
 		return totalScore;
 	}
 

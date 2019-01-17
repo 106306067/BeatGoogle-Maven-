@@ -13,9 +13,7 @@ public class WebNode {
 	}
 
 	public int setNodeScore(ArrayList<Integer> countList) throws IOException {
-		// webPage.setScore(countList);
 		this.nodeScore = webPage.setScore(countList);
-		;
 
 		for (WebNode child : children) {
 			this.nodeScore += child.nodeScore;
@@ -29,7 +27,7 @@ public class WebNode {
 	}
 
 	public int getDepth() {
-		int retVal = 1; // retVal = return value
+		int retVal = 1;
 		WebNode currNode = this;
 
 		while (currNode.parent != null) {

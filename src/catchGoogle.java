@@ -64,6 +64,7 @@ public class catchGoogle {
 		}
 		return urlList;
 	}
+
 	public ArrayList<String> queryTitle() throws IOException {
 		if (this.content == null) {
 			this.content = fetchContent();
@@ -77,9 +78,8 @@ public class catchGoogle {
 				Element h3 = li.select("h3.r").get(0);
 				String title = h3.text();
 
-				
 				titleList.add(title);
-				
+
 			} catch (IndexOutOfBoundsException e) {
 				// Do nothing
 			}

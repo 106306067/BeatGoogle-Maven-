@@ -28,7 +28,6 @@ public class Main extends HttpServlet {
 	 */
 	public Main() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -37,7 +36,6 @@ public class Main extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
@@ -49,13 +47,13 @@ public class Main extends HttpServlet {
 			return;
 		}
 
-		String kK = request.getParameter("keyword")+"男團"+"女團";
+		String kK = request.getParameter("keyword") + "男團" + "女團";
 
 		catchGoogle catchgoogle = new catchGoogle(kK);
 		ArrayList<String> list = catchgoogle.queryUrl();
 		ArrayList<String> Tlist = catchgoogle.queryTitle();
-		//ArrayList<String> list = new ArrayList<String>();
-		//list.add("https://www.google.com.tw/url?q=https://zh.wikipedia.org/zh-tw/Momo_(TWICE)&sa=U&ved=0ahUKEwjdjpLduOvfAhWTc3AKHVgCAuIQFgh6MBI&usg=AOvVaw3xsCWKbLZkOMLmFkkO8aD4");
+		// ArrayList<String> list = new ArrayList<String>();
+		// list.add("https://www.google.com.tw/url?q=https://zh.wikipedia.org/zh-tw/Momo_(TWICE)&sa=U&ved=0ahUKEwjdjpLduOvfAhWTc3AKHVgCAuIQFgh6MBI&usg=AOvVaw3xsCWKbLZkOMLmFkkO8aD4");
 		System.out.println("Url from Google:" + list);
 
 		WordCounter wcounter = new WordCounter(list);
@@ -82,7 +80,7 @@ public class Main extends HttpServlet {
 			String title = Tlist.get(s);
 			String urlstr = list.get(s);
 			int score = sList.get(s);
-			sl.add(new SortList(title,urlstr, score));
+			sl.add(new SortList(title, urlstr, score));
 		}
 
 		System.out.println("result:");
@@ -100,7 +98,7 @@ public class Main extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

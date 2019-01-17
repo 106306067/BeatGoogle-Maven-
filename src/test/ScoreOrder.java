@@ -1,4 +1,5 @@
 package test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -9,9 +10,11 @@ public class ScoreOrder {
 	public ScoreOrder(ArrayList<SortList> SList) {
 		this.SList = SList;
 	}
+
 	public ArrayList<SortList> getSList() {
 		return SList;
 	}
+
 	public void sort() {
 		this.SList = doQuickSort(this.SList);
 	}

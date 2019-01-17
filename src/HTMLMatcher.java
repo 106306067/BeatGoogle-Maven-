@@ -11,19 +11,11 @@ public class HTMLMatcher {
 	private static Set<String> alloverurl = new HashSet<>();
 	// 記錄所有url的深度進行爬取判斷
 	private static Map<String, Integer> allurldepth = new HashMap<>();
-	// 爬取得深度 要不要改1?
+	// 爬取得深度
 	private static int maxdepth = 1;
 
 	public static List<String> urlList = new ArrayList<>();
 
-//		public static void main(String args[]) {
-//			// 確定爬取的網頁地址，此處為噹噹網首頁上的圖書分類進去的網頁
-//			// 網址為 http://book.dangdang.com/
-//			// String strurl="http://search.dangdang.com/?key=%BB%FA%D0%B5%B1%ED&act=input";
-//			String strurl = "http://book.dangdang.com/";
-	//
-//			workurl(strurl, 1);
-//		}
 	public String urlStr;
 
 	public HTMLMatcher(String urlStr) {
@@ -40,24 +32,16 @@ public class HTMLMatcher {
 				URLConnection conn = url.openConnection();
 				// 通過鏈接取得網頁返回的數據
 				InputStream is = conn.getInputStream();
-
-				// ****System.out.println(conn.getContentEncoding());
-				// 一般按行讀取網頁數據，並進行內容分析
-				// 因此用BufferedReader和InputStreamReader把字節流轉化為字符流的緩衝流
-				// 進行轉換時，需要處理編碼格式問題
 				BufferedReader br = new BufferedReader(new InputStreamReader(is, "GB2312"));
 
-				// 按行讀取並打印
 				String line = null;
 				// 正則表達式的匹配規則提取該網頁的鏈接
 				Pattern p = Pattern.compile("<a .*href=.+</a>");
-				// 創建一個輸出流，用於保存文檔,文檔名為執行時間，以防重複
-				//PrintWriter pw = new PrintWriter(new File(System.currentTimeMillis() + ".txt"));
 
 				while ((line = br.readLine()) != null) {
 					// System.out.println(line);
 					// 編寫正則，匹配超鏈接地址
-					//pw.println(line);
+
 					Matcher m = p.matcher(line);
 					while (m.find()) {
 						String href = m.group();
@@ -93,23 +77,15 @@ public class HTMLMatcher {
 					}
 
 				}
-				//pw.close();
 				br.close();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-				// continue;
 			}
 			// 將當前url歸列到alloverurl中
 			alloverurl.add(strurl);
 			// System.out.println(strurl + "網頁爬取完成，已爬取數量：" + alloverurl.size() + "，剩餘爬取數量："
-			// + allwaiturl.size());
+
 		}
-		// 用遞歸的方法繼續爬取其他鏈接
-//			String nexturl = allwaiturl.get(0);
-//			allwaiturl.remove(0);
-//			workurl(nexturl, allurldepth.get(nexturl));
-//			
+
 		return urlList;
 	}
 
